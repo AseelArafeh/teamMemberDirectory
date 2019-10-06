@@ -1,0 +1,53 @@
+@import './variables';
+@import './functions';
+
+
+@include initialFormat();
+
+header {
+    background: $websiteColor;
+    height: 10%;
+    h1 {
+        font: 22px 'Segoe UI'; 
+        text-align: center;
+       // vertical-align: middle;
+    }
+}
+
+.main-container {
+    background: red;
+    @include flexFunction(center, flex-start, 100%, 90%, row );
+
+    .add-member-container {
+        background: green;
+        @include flexFunction(flex-start,center,  30%, 100%, column );
+
+    }
+    .members-list-container {
+        background: blue;
+        @include flexFunction(flex-start,center,  60%, 100%, column );
+
+        .main-filter-bar {
+            background: pink;
+            @include flexFunction(space-between, center, 100%, 10%, row );
+            .filter-bar {
+                background: rgb(74, 216, 31);
+                @include flexFunction(space-around, center, 70%, 20%, row );
+            }
+            .number-of-items {
+                background: white;
+                width: 10%;
+                
+            }
+            input {
+                width: 100px;
+            }
+        }
+
+        .list {
+            background: yellow;
+            @include flexFunction( flex-start,center, 100%, 90%, column );
+        }
+    }
+}
+

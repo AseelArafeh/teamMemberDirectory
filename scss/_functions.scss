@@ -1,0 +1,25 @@
+@mixin initialFormat () {
+    * {
+        margin: 0;
+        //border: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    html, body {
+        height: 100%;
+        width: 100%;
+    }   
+}
+
+@mixin flexFunction ($justifyContent, $alignItems, $width, $height, $direction ){
+
+    display: flex;
+    justify-content: $justifyContent;
+    align-items: $alignItems;
+    width: $width;
+    height: $height;
+    //flex-wrap: wrap;
+    flex-direction: $direction;
+
+}
