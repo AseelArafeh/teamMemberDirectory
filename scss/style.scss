@@ -1,27 +1,99 @@
 @import './variables';
 @import './functions';
 
-
 @include initialFormat();
 
 header {
     background: $websiteColor;
-    height: 10%;
+    height: 7.8%;
     h1 {
-        font: 22px 'Segoe UI'; 
+        font: 22px 'Segoe UI';
+        font-weight: bold;
+        color: #fff;
         text-align: center;
-       // vertical-align: middle;
+        //vertical-align: middle;
+        padding: 1% 1%;
+        // use vh unit 
+        line-height: 98%;
     }
 }
 
 .main-container {
-    background: red;
-    @include flexFunction(center, flex-start, 100%, 90%, row );
+    background: #fff;
+    @include flexFunction(center, flex-start, 100%, 92.2%, row );
 
     .add-member-container {
-        background: green;
-        @include flexFunction(flex-start,center,  30%, 100%, column );
+        //background: rgb(179, 149, 154);
+        @include flexFunction(flex-start,center,  27%, auto, column );
+        border: 1px solid $borderColor;
+        border-radius: 25px;
+        margin: 2.5% 2%;
 
+        h1 {
+            font: 22px 'Segoe UI';
+            font-weight: bold;
+            color: $textColor;
+            padding: 5%;
+        }
+
+        .add-member-form {
+            @include flexFunction(flex-start,center,  100%, /*100%*/auto, column );
+            
+            div input {
+                border: 1px solid $borderColor;
+                border-radius: 8px;
+                margin: 1%;
+                padding: 3%;
+                width: 310px;
+                /*
+                &::focus {
+                    outline: none;
+                }
+                */
+            }
+          
+            div textarea {
+                border: 1px solid $borderColor;
+                border-radius: 8px;
+                margin: 1%;
+                padding: 12px;
+                width: 310px;
+                //overflow: scroll;
+                // number of chars
+            }
+
+            span {
+                //@include flexFunction(flex-start,center,  100%, auto, row );
+                margin-top: 1.5%;
+                .checkbox-input {
+                    //border: 1px solid $borderColor;
+                    //background: #fff;
+                    
+                }
+                span {
+                    font: 12px 'Segoe UI';
+                    color: black;
+                    margin-right: 93px;
+                }
+                .text-input {
+                    border: 1px solid $borderColor;
+                    //border-radius: 8px;
+                    padding: 3px;
+                    width: 50px;
+                }
+            }    
+        }
+        button {
+            background: $websiteColor;
+            border: none;
+            width: 100%;
+            padding: 12px 150px;
+            border-radius: 0px 0px 25px 25px;
+            color: #fff;
+            font-weight: bold;
+            font: 22px 'Segoe UI';
+            margin-top: 5%;
+        }
     }
     .members-list-container {
         background: blue;
@@ -45,7 +117,7 @@ header {
         }
 
         .list {
-            background: yellow;
+            background: #f3f2f2;
             @include flexFunction( flex-start,center, 100%, 90%, column );
         }
     }
