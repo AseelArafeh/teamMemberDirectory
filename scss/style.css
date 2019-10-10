@@ -147,7 +147,6 @@ header h1 {
 }
 
 .main-container .members-list-container {
-  background: blue;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -166,7 +165,8 @@ header h1 {
 }
 
 .main-container .members-list-container .main-filter-bar {
-  background: pink;
+  color: white;
+  background: #F6F6F6;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -185,7 +185,9 @@ header h1 {
 }
 
 .main-container .members-list-container .main-filter-bar .filter-bar {
-  background: #4ad81f;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  background: #2D89E6;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -200,19 +202,37 @@ header h1 {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  height: 50%;
 }
 
 .main-container .members-list-container .main-filter-bar .number-of-items {
-  background: white;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+  background: #2D89E6;
   width: 10%;
+  height: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 10%;
+  height: 50%;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
 }
 
-.main-container .members-list-container .main-filter-bar input {
+.main-container .members-list-container .main-filter-bar select {
   width: 100px;
 }
 
 .main-container .members-list-container .list {
-  background: #f3f2f2;
+  background: #F6F6F6;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

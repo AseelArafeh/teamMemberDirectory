@@ -90,28 +90,36 @@ header {
         }
     }
     .members-list-container {
-        background: blue;
+       // background: blue;
         @include flexFunction(flex-start,center,  60%, 100%, column );
-
+        
         .main-filter-bar {
-            background: pink;
+            color: white;
+            background: $membersListBackground;
             @include flexFunction(space-between, center, 100%, 10%, row );
             .filter-bar {
-                background: rgb(74, 216, 31);
+                border-top-right-radius: 25px;
+                border-bottom-right-radius: 25px;
+                background: $websiteColor;
                 @include flexFunction(space-around, center, 70%, 20%, row );
+                height: 50%;
             }
             .number-of-items {
-                background: white;
+                border-top-left-radius: 25px;
+                border-bottom-left-radius: 25px;
+                background: $websiteColor;
                 width: 10%;
+                height: 50%;
+                @include flexFunction(space-around, center, 10%, 50%, row );
                 
             }
-            input {
+            select {
                 width: 100px;
             }
         }
 
         .list {
-            background: #f3f2f2;
+            background: $membersListBackground;
             @include flexFunction( flex-start,center, 100%, 90%, column );
         }
     }
