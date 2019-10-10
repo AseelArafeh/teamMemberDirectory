@@ -15,20 +15,31 @@
                 <form class="add-member-form"> 
                     
                     <div>
-                        <input type="text" value="Name"> 
+                        <input type="text" placeholder="Name"> 
                     </div>
                     <div>
-                        <input type="text" value="Email">
+                        <input type="text" placeholder="Email">
+                    </div>
+                    <div >
+                        <select class="custom-select">
+                            <option value="0" selected disabled hidden>Major</option>
+                            <option value="1">Computer Science</option>
+                            <option value="2">Computer Engineering</option>
+                            <option value="3">Information Technology</option>
+                            <option value="4">Information System </option>
+                        </select>                          
+                    </div>
+                    <div >
+                        <select class="custom-select">
+                            <option value="0" selected disabled hidden>Role</option>
+                            <option value="1">Front-End Developer</option>
+                            <option value="2">Back-End Developer</option>
+                            <option value="3">Full-Stack Developer</option>
+                            <option value="4">UI/UX Designer</option>
+                        </select>
                     </div>
                     <div>
-                        <input type="text" value="Major"> 
-                    </div>
-                    <div>
-                        <input type="text" value="Role">
-                    </div>
-                    <div>
-                        <textarea name="" cols="30" rows="10" minlength="500" maxlength="1500">
-                            Biograph
+                        <textarea name="" cols="30" rows="10" minlength="500" maxlength="1500" placeholder="Biograph">
                         </textarea>
                     </div>
                     
@@ -36,13 +47,9 @@
                         <input type="checkbox" class="checkbox-input">
                         <span>Add to button / or index at</span> 
                         <input type="text" class="text-input">
-                    </span>
-                    
-                    
+                    </span>   
                 </form>
-                
-                    <button type="button">Save</button>
-                
+                <button type="button">Save</button>
             </aside>
             <div class="members-list-container">
                 <nav class="main-filter-bar">
