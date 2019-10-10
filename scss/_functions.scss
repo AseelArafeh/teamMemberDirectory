@@ -14,6 +14,13 @@
     }   
 }
 
+@mixin memberFormItems {
+    border: 1px solid $borderColor;
+    border-radius: 8px;
+    margin: 1%;
+    padding: 3%;
+    width: 310px;
+}
 @mixin flexFunction ($justifyContent, $alignItems, $width, $height, $direction ){
 
     display: flex;
