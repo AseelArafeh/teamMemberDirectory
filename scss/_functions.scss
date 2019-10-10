@@ -32,3 +32,17 @@
     flex-direction: $direction;
 
 }
+
+// this function used to convert px to % , in order to make the page responsive
+
+@mixin widthCalculatePercentage ($widthPX, $parentWidthPX){
+    
+    width: unquote( ($widthPX * 1.0)  / ($parentWidthPX * 100) + '% ' + !important );
+    
+}
+
+@mixin heigthCalculatePercentage ($parentHeightPX, $heightPX){
+    
+    height: unquote( ($heightPX * 1.0)  / ($parentHeightPX * 100) + '% ' + !important );
+    
+}

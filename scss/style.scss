@@ -6,7 +6,7 @@
 
 header {
     background: $websiteColor;
-    height: 7.8%;
+    height: heigthCalculatePercentage(1080, 76);
     h1 {
         font: 22px 'Segoe UI';
         font-weight: bold;
@@ -121,6 +121,7 @@ header {
         .list {
             background: $membersListBackground;
             @include flexFunction( flex-start,center, 100%, 90%, column );
+            list-style: none;
         }
     }
 }
