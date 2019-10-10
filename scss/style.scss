@@ -53,8 +53,7 @@ header {
           
             div textarea {
                 @include memberFormItems();
-                //overflow: scroll;
-                // number of chars
+                overflow-y: auto;
             }
 
             span {
