@@ -96,18 +96,24 @@ header h1 {
   margin: 1%;
   padding: 3%;
   width: 310px;
-  /*
-                &::focus {
-                    outline: none;
-                }
-                */
+}
+
+.main-container .add-member-container .add-member-form .custom-select {
+  border: 1px solid #cfcaca;
+  border-radius: 8px;
+  margin: 1%;
+  padding: 3%;
+  width: 310px;
+  position: relative;
+  font-family: Arial;
+  color: gray;
 }
 
 .main-container .add-member-container .add-member-form div textarea {
   border: 1px solid #cfcaca;
   border-radius: 8px;
   margin: 1%;
-  padding: 12px;
+  padding: 3%;
   width: 310px;
 }
 

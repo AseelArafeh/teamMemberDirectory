@@ -3,6 +3,7 @@
 
 @include initialFormat();
 
+
 header {
     background: $websiteColor;
     height: 7.8%;
@@ -40,24 +41,18 @@ header {
             @include flexFunction(flex-start,center,  100%, /*100%*/auto, column );
             
             div input {
-                border: 1px solid $borderColor;
-                border-radius: 8px;
-                margin: 1%;
-                padding: 3%;
-                width: 310px;
-                /*
-                &::focus {
-                    outline: none;
-                }
-                */
+                @include memberFormItems();
+            
+            }
+            .custom-select {
+                @include memberFormItems();
+                position: relative;
+                font-family: Arial;
+                color: gray;
             }
           
             div textarea {
-                border: 1px solid $borderColor;
-                border-radius: 8px;
-                margin: 1%;
-                padding: 12px;
-                width: 310px;
+                @include memberFormItems();
                 //overflow: scroll;
                 // number of chars
             }
