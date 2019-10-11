@@ -257,7 +257,7 @@ header h1 {
   padding: 2px 2px;
 }
 
-.main-container .members-list-container .main-filter-bar .number-of-items {
+.main-container .members-list-container .main-filter-bar #number-of-items {
   border-top-left-radius: 25px;
   border-bottom-left-radius: 25px;
   background: #2D89E6;
