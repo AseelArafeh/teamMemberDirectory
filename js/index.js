@@ -27,6 +27,8 @@ function saveButton(){
     console.log(newMember);
     console.log(teamMembers);
     // add to localstorage 
+    const jsonString = JSON.stringify(teamMembers);
+    localStorage.setItem('allMembers', teamMembers);
 
 }
 
