@@ -11,6 +11,33 @@ class member {
 
 let teamMembers = [];
 
+function updateNumberOfItems(){
+    document.getElementById("number-of-items").innerHTML = teamMembers.length;
+}
+
+function showAllMembers() {
+    let i;
+    for (i = 0; i < teamMembers.length; i++) {
+        let currentMember = `<li class="list-element">
+                                <div class="btn">
+                                    <div class="delete-btn">
+                                        <div class="inner-symbol">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="member-information"  id="myBtn">
+                                    <h3>${teamMembers[i].name}</h3>
+                                    <span>
+                                        ${teamMembers[i].email} / ${teamMembers[i].major} / ${teamMembers[i].role}
+                                    </span>
+                                    <p>
+                                        ${teamMembers[i].biography}
+                                    </p>
+                                </div>
+                            </li>`;
+        document.getElementById('list-of-members').innerHTML += currentMember;
+    }
+}
 
 function saveButton(){
 
@@ -29,6 +56,8 @@ function saveButton(){
     // add to localstorage 
     const jsonString = JSON.stringify(teamMembers);
     localStorage.setItem('allMembers', teamMembers);
+    showAllMembers();
+    updateNumberOfItems();
 
 }
 
