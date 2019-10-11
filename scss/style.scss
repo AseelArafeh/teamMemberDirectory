@@ -59,11 +59,7 @@ header {
             span {
                 //@include flexFunction(flex-start,center,  100%, auto, row );
                 margin-top: 1.5%;
-                .checkbox-input {
-                    //border: 1px solid $borderColor;
-                    //background: #fff;
-                    
-                }
+                
                 span {
                     font: 12px 'Segoe UI';
                     color: black;
@@ -96,13 +92,47 @@ header {
         .main-filter-bar {
             color: white;
             background: $membersListBackground;
-            @include flexFunction(space-between, center, 100%, 10%, row );
+            @include flexFunction(space-between, center, 100%, 20%, row );
             .filter-bar {
                 border-top-right-radius: 25px;
                 border-bottom-right-radius: 25px;
                 background: $websiteColor;
-                @include flexFunction(space-around, center, 70%, 20%, row );
+                @include flexFunction(space-around, center, 80%, 50%, row );
                 height: 50%;
+                width: 80%;
+                .major-role {
+                    border-right: 1px solid #fff;
+                    border-left: 1px solid #fff;
+                }
+                div {
+                    
+                    @include flexFunction(center, center, 80%, 80%, row );
+                    select {
+                        margin-right: 8px;
+                        margin-left: 8px;
+                        border-radius: 5px;
+                        border: none;
+                        padding: 2px 2px;
+                    }
+                    .sort-by-class {
+                        width: 81px;
+                    }
+                    .major-class, .role-class {
+                        width: 81px;
+                        border-radius: 5px;
+                        border: none;
+                        padding: 2px 2px;
+                        
+                    }
+                    input {
+                        width: 186px;
+                        border-radius: 5px;
+                        border: none;
+                        padding: 2px 2px;
+                    }
+                    
+
+                }
             }
             .number-of-items {
                 border-top-left-radius: 25px;
