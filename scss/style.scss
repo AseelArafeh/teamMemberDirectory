@@ -86,8 +86,9 @@ header {
         }
     }
     .members-list-container {
+        overflow-y: auto;
        // background: blue;
-        @include flexFunction(flex-start,center,  60%, 100%, column );
+        @include flexFunction(flex-start,center,  60%, 100%, column ); // auto ? 100%
         
         .main-filter-bar {
             color: white;
@@ -152,6 +153,47 @@ header {
             background: $membersListBackground;
             @include flexFunction( flex-start,center, 100%, 90%, column );
             list-style: none;
+            .list-element {
+                //border: 1px solid $borderColor;
+                margin-bottom: 30px;
+                height: 30%;
+                overflow: hidden;
+                @include flexFunction( flex-start,flex-start, 95%, 111, row );
+                .btn{
+                    @include flexFunction( flex-start,center, 7%, 100%, row );
+                    
+                    .delete-btn {
+                        background: #FF4A4A;
+                        border-radius: 50%;
+                        width: 38px;
+                        height: 38px;
+                        @include flexFunction( center,center, 38, 38, row );
+                        .inner-symbol {
+                            background: #FFF;
+                            width: 20px;
+                            height: 8px;
+                        }
+                    }
+                }
+                .member-information {
+                    width: 90%;
+                   // background: olive;
+                    h3 {
+                        font: 22px 'Segoe UI';
+                        font-weight: bold;
+                    }
+                    span {
+                        font: 14px 'Segoe UI';
+                        font-weight: bold;
+                        color: $websiteColor;
+                    }
+                    p {
+                        padding-top: 20px;
+                        font: 14px 'Segoe UI';
+                        color: gray;
+                    }
+                }
+            }
         }
     }
 }

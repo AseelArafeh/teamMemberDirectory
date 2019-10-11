@@ -3,6 +3,7 @@
   padding: 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  font-family: Segoe UI;
 }
 
 html, body {
@@ -147,6 +148,7 @@ header h1 {
 }
 
 .main-container .members-list-container {
+  overflow-y: auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -299,5 +301,93 @@ header h1 {
       -ms-flex-direction: column;
           flex-direction: column;
   list-style: none;
+}
+
+.main-container .members-list-container .list .list-element {
+  margin-bottom: 30px;
+  height: 30%;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  width: 95%;
+  height: 111;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.main-container .members-list-container .list .list-element .btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 7%;
+  height: 100%;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.main-container .members-list-container .list .list-element .btn .delete-btn {
+  background: #FF4A4A;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 38;
+  height: 38;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.main-container .members-list-container .list .list-element .btn .delete-btn .inner-symbol {
+  background: #FFF;
+  width: 20px;
+  height: 8px;
+}
+
+.main-container .members-list-container .list .list-element .member-information {
+  width: 90%;
+}
+
+.main-container .members-list-container .list .list-element .member-information h3 {
+  font: 22px 'Segoe UI';
+  font-weight: bold;
+}
+
+.main-container .members-list-container .list .list-element .member-information span {
+  font: 14px 'Segoe UI';
+  font-weight: bold;
+  color: #2D89E6;
+}
+
+.main-container .members-list-container .list .list-element .member-information p {
+  padding-top: 20px;
+  font: 14px 'Segoe UI';
+  color: gray;
 }
 /*# sourceMappingURL=style.css.map */
