@@ -16,13 +16,13 @@
                 <form class="add-member-form"> 
                     
                     <div>
-                        <input type="text" placeholder="Name"> 
+                        <input type="text" placeholder="Name" id="name"> 
                     </div>
                     <div>
-                        <input type="text" placeholder="Email">
+                        <input type="text" placeholder="Email" id="email">
                     </div>
                     <div >
-                        <select class="custom-select">
+                        <select class="custom-select" id="all-majors">
                             <option value="0" selected disabled hidden>Major</option>
                             <option value="1">Computer Science</option>
                             <option value="2">Computer Engineering</option>
@@ -31,7 +31,7 @@
                         </select>                          
                     </div>
                     <div >
-                        <select class="custom-select">
+                        <select class="custom-select" id="all-roles">
                             <option value="0" selected disabled hidden>Role</option>
                             <option value="1">Front-End Developer</option>
                             <option value="2">Back-End Developer</option>
@@ -40,7 +40,7 @@
                         </select>
                     </div>
                     <div>
-                        <textarea name="" cols="30" rows="10" minlength="500" maxlength="1500" placeholder="Biograph">
+                        <textarea name="" cols="30" rows="10" minlength="500" maxlength="1500" placeholder="Biograph" id="biograph">
                         </textarea>
                     </div>
                     
@@ -50,7 +50,7 @@
                         <input type="text" class="text-input">
                     </span>   
                 </form>
-                <button type="button">Save</button>
+                <button type="button" onclick="saveButton()">Save</button>
             </aside>
             <div class="members-list-container">
                 <nav class="main-filter-bar">
