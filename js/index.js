@@ -12,7 +12,7 @@ class member {
 let teamMembers = [];
 
 function updateNumberOfItems(){
-    document.getElementById("number-of-items").innerHTML = teamMembers.length;
+    document.getElementById("number-of-items").innerHTML = teamMembers.length + 1;
 }
 
 function showAllMembers() {
