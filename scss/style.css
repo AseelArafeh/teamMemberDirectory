@@ -317,7 +317,7 @@ header h1 {
       -ms-flex-align: start;
           align-items: flex-start;
   width: 95%;
-  height: 111;
+  height: 24%;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
@@ -371,6 +371,8 @@ header h1 {
 }
 
 .main-container .members-list-container .list .list-element .member-information {
+  cursor: -webkit-zoom-in;
+  cursor: zoom-in;
   width: 90%;
 }
 
@@ -389,5 +391,138 @@ header h1 {
   padding-top: 20px;
   font: 14px 'Segoe UI';
   color: gray;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  /*overflow: auto; /* Enable scroll if needed */
+  background-color: black;
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
+  /* The Close Button */
+  /* Modal Content */
+}
+
+.modal .close-container {
+  background: black;
+  width: 57px;
+  height: 57px;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.modal .close-container .close {
+  color: #aaaaaa;
+  /*float: left;*/
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.modal .close-container .close:hover, .modal .close-container .close:focus {
+  color: #FFF;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal .modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  border: 1px solid #888;
+  width: 66%;
+  border-radius: 20px;
+  /*
+        position: relative;
+        &::before {
+            position: absolute;
+            bottom: 0;
+            top:0;
+            display: block;
+            content: '';
+            width: 44px;
+            height: 44px;
+            border-radius: 44px ;
+            background: black;
+        }*/
+}
+
+.modal .modal-content .member-information {
+  margin: auto;
+  padding: 100px 100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 90%;
+}
+
+.modal .modal-content .member-information h2 {
+  font: 78px 'Segoe UI';
+  font-weight: bold;
+}
+
+.modal .modal-content .member-information span {
+  font: 14px 'Segoe UI';
+  font-weight: bold;
+  color: #2D89E6;
+}
+
+.modal .modal-content .member-information p {
+  padding-top: 20px;
+  font: 14px 'Segoe UI';
+  color: gray;
+}
+
+.modal .modal-content .member-information button {
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.modal .modal-content .member-information .delete-btn {
+  background-color: #FF4A4A;
+}
+
+.modal .modal-content .member-information .save-btn {
+  background-color: #2D89E6;
+}
+
+.modal .modal-content .member-information .cancel-btn {
+  background-color: #484848;
 }
 /*# sourceMappingURL=style.css.map */
