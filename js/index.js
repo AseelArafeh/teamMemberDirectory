@@ -1,3 +1,4 @@
+
 class member {
 	constructor(name, email, major, role, biography) {
 		this.name = name;
@@ -28,6 +29,8 @@ function saveButton(){
     // add to localstorage 
 
 }
+
+
 
 
 
