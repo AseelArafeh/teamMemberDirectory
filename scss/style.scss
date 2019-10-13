@@ -167,6 +167,7 @@ header {
                         border-radius: 50%;
                         width: 38px;
                         height: 38px;
+                        cursor: pointer;
                         @include flexFunction( center,center, 38, 38, row );
                         .inner-symbol {
                             background: #FFF;
@@ -202,7 +203,7 @@ header {
             
 /* The Modal (background) */
 .modal {
-    display: none; /* Hidden by default */
+    display: block; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
     //padding-top: 2%; /* Location of the box */
@@ -224,7 +225,9 @@ header {
         display:flex;
         justify-content:center; 
         align-items:center;
+        
         .close {
+            cursor: pointer;
             color: #aaaaaa;
             /*float: left;*/
             font-size: 28px;
@@ -280,6 +283,9 @@ header {
                 //padding-bottom: 20px;
                 font: 14px 'Segoe UI';
                 color: gray;
+                height: 150px;
+                overflow-y: scroll;
+                margin: 15px;
             }
             button {
                 border: none;

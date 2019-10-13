@@ -9,26 +9,31 @@ class member {
 	}
 }
 
-let teamMembers = [];
+var teamMembers = [];
 
 function updateNumberOfItems(){
     document.getElementById("number-of-items").innerHTML = teamMembers.length + 1;
 }
 
 function showAllMembers() {
+    let allMembers = localStorage.getItem('allMembers');
+    console.log(allMembers);
+    console.log(teamMembers);
+    //teamMembers = allMembers ? JSON.parse(localStorage.getItem('allMembers')) : [];
+    console.log(teamMembers);
     let i;
     for (i = 0; i < teamMembers.length; i++) {
         let currentMember = `<li class="list-element">
-                                <div class="btn">
+                                <div class="btn" onClick="this.parentNode.parentNode.removeChild(this.parentNode);">
                                     <div class="delete-btn">
                                         <div class="inner-symbol">
                                         </div>
                                     </div>
                                 </div>
-                                <div class="member-information"  id="myBtn">
+                                <div class="member-information"  id="myBtn" onClick="showPopUp(this);">
                                     <h3>${teamMembers[i].name}</h3>
                                     <span>
-                                        ${teamMembers[i].email} / ${teamMembers[i].major} / ${teamMembers[i].role}
+                                        <span> ${teamMembers[i].email} </span> / <span> ${teamMembers[i].major} </span> / <span> ${teamMembers[i].role} </span>
                                     </span>
                                     <p>
                                         ${teamMembers[i].biography}
@@ -68,22 +73,47 @@ function saveButton(){
 
 
 // POP-UP
-let modal = document.getElementById("myModal");// Get the modal
-let btn = document.getElementById("myBtn");// Get the button that opens the modal
-let span = document.getElementsByClassName("close")[0];// Get the <span> element that closes the modal
 
-// When the user clicks the button, open the modal 
-btn.onclick = function() {
-    modal.style.display = "block";
+// When the user clicks any member, members's own information will apper in a pop up modal 
+function showPopUp (currentMember) {
+    console.log(currentMember.children[2].innerHTML);
+    
+    document.getElementById('list-of-members').innerHTML = `<div id="myModal" class="modal">
+                                                                <div class="close-container">
+                                                                    <span class="close" onClick="hidePopUp()">&times;</span>
+                                                                </div>
+                                                                <div class="modal-content">
+                                                                    <div class="member-information">
+                                                                        <h2 >${currentMember.children[0].innerHTML}</h2>
+                                                                        <span>
+                                                                            ${currentMember.children[1].children[0].innerHTML} / 
+                                                                            ${currentMember.children[1].children[1].innerHTML} / 
+                                                                            ${currentMember.children[1].children[2].innerHTML}
+                                                                        </span>
+                                                                        <p>
+                                                                            ${currentMember.children[2].innerHTML}
+                                                                        </p>
+                                                                        <span>
+                                                                            <button type="button" class="delete-btn">DELETE</button>
+                                                                            <button type="button" class="save-btn">SAVE</button>
+                                                                            <button type="button" class="cancel-btn" onClick="hidePopUp()">CANCEL</button>
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>`;
+                                                                
+    
 }
 
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
+
+function hidePopUp () {
+    let modal = document.getElementById("myModal");// Get the modal
     modal.style.display = "none";
 }
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
+    let modal = document.getElementById("myModal");// Get the modal
     if (event.target == modal) {
         modal.style.display = "none";
     }
