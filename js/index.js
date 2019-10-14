@@ -1,6 +1,5 @@
 let teamMembers = [];
-let allEmails = new Set();
-
+let allEmails = new Set(); 
 
 class member {
 	constructor(name, email, major, role, biography) {
@@ -9,30 +8,34 @@ class member {
         this.major = major;
         this.role = role;
         this.biography = biography;
-
 	}
 }
 
 showAllMembers();
 updateNumberOfItems();
 
-function updateNumberOfItems(){
-    document.getElementById("number-of-items").innerHTML = teamMembers.length;
+function updateNumberOfItems() {
+    document.getElementById("number-of-items").innerHTML = teamMembers.length + " ITEMS";
+}
+
+function storeAtLocalStorage() {
+    const jsonString = JSON.stringify(teamMembers);    
+    localStorage.setItem('allMembers', jsonString);
+}
+
+function getFromLocalStorage() {
+    const allMembers = localStorage.getItem('allMembers');
+    teamMembers = JSON.parse(allMembers) || [];
 }
 
 function showAllMembers() {
-    const allMembers = localStorage.getItem('allMembers');
-    console.log(allMembers);
-    console.log(teamMembers);
-    //from  local storage to my array then output members 
-    teamMembers = JSON.parse(allMembers) || [];
-    console.log(teamMembers);
-    let i;
+
+    getFromLocalStorage();
     //clear the member list befor 
     document.getElementById('list-of-members').innerHTML = null;
-    for (i = 0; i < teamMembers.length; i++) {
+    for (let i = 0; i < teamMembers.length; i++) {
         let currentMember = `<li class="list-element">
-                                <div class="btn" onClick="deleteMember(this);">
+                                <div class="btn" onClick="deleteMember('${teamMembers[i].email}');">
                                     <div class="delete-btn">
                                         <div class="inner-symbol">
                                         </div>
@@ -41,7 +44,7 @@ function showAllMembers() {
                                 <div class="member-information"  id="myBtn" onClick="showPopUp(this);">
                                     <h3>${teamMembers[i].name}</h3>
                                     <span>
-                                                          <span>${teamMembers[i].email}</span> / <span>${teamMembers[i].major}</span> / <span>${teamMembers[i].role}</span>
+                                        <span>${teamMembers[i].email}</span> / <span>${teamMembers[i].major}</span> / <span>${teamMembers[i].role}</span>
                                     </span>
                                     <p>
                                         ${teamMembers[i].biography}
@@ -52,7 +55,7 @@ function showAllMembers() {
     }
 }
 
-function saveButton() {
+function addNewMember() {
 
     let name = document.getElementById('name').value;
     let email = document.getElementById('email').value;
@@ -70,22 +73,34 @@ function saveButton() {
         alert("email was already exist");
         return;
     }
+
     allEmails.add(email);
     let newMember = new member(name, email, major, role, biography);
     teamMembers.push(newMember);
-    console.log(newMember);
-    console.log(teamMembers);
-    // add to localstorage 
-    const jsonString = JSON.stringify(teamMembers);
-    console.log(teamMembers);
-    
-    localStorage.setItem('allMembers', jsonString);
+    storeAtLocalStorage();
     showAllMembers();
     updateNumberOfItems();
-
 }
-console.log(teamMembers);
 
+function deleteMember(emailToBeDeleted) {
+    showAllMembers();
+    updateNumberOfItems();
+    for (let i=0; i<teamMembers.length;i++) {
+        console.log(teamMembers[i].email);
+        console.log(emailToBeDeleted);
+        if(teamMembers[i].email == emailToBeDeleted) {
+            teamMembers.splice(i, 1);
+        }
+    }
+    hidePopUp();
+    // set the updated array to localstorage 
+    storeAtLocalStorage();
+    //elementToBeDeleted.parentNode.parentNode.removeChild(elementToBeDeleted.parentNode);
+    showAllMembers();
+    updateNumberOfItems();
+    
+}
+/*
 function deleteMember(elementToBeDeleted) {
 
     console.log(elementToBeDeleted);// email
@@ -111,7 +126,7 @@ function deleteMember(elementToBeDeleted) {
     updateNumberOfItems();
     showAllMembers();
     
-}
+}*/
 
 
 
@@ -120,50 +135,54 @@ function deleteMember(elementToBeDeleted) {
 
 // When the user clicks any member, members's own information will apper in a pop up modal 
 function showPopUp (currentMember) {
+
     console.log(currentMember);
- //let elementToBeDeleted = new member(currentMember.children[0].innerHTML, currentMember.children[1].children[0].innerHTML, currentMember.children[1].children[1].innerHTML, currentMember.children[1].children[2].innerHTML, currentMember.children[2].innerHTML);
+    let modal = document.getElementById("myModal");
+    modal.style.display = "block";
+    //let elementToBeDeleted = new member(currentMember.children[0].innerHTML, currentMember.children[1].children[0].innerHTML, currentMember.children[1].children[1].innerHTML, currentMember.children[1].children[2].innerHTML, currentMember.children[2].innerHTML);
     //console.log(elementToBeDeleted);
-    document.getElementById('list-of-members').innerHTML = `<div id="myModal" class="modal">
-                                                                <div class="close-container">
-                                                                    <span class="close" onClick="hidePopUp()">&times;</span>
-                                                                </div>
-                                                                <div class="modal-content">
-                                                                    <div class="member-information">
-                                                                        <h2 >${currentMember.children[0].innerHTML}</h2>
-                                                                        <span>
-                                                                            ${currentMember.children[1].children[0].innerHTML} / 
-                                                                            ${currentMember.children[1].children[1].innerHTML} / 
-                                                                            ${currentMember.children[1].children[2].innerHTML}
-                                                                        </span>
-                                                                        <p>
-                                                                            ${currentMember.children[2].innerHTML}
-                                                                        </p>
-                                                                        <span>
-                                                                            <button type="button" class="delete-btn" >DELETE</button>
-                                                                            <button type="button" class="save-btn">SAVE</button>
-                                                                            <button type="button" class="cancel-btn" onClick="hidePopUp()">CANCEL</button>
-                                                                        </span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>`;
-   
-  |                                                              
+    document.getElementById('myModal').innerHTML = `<div class="close-container">
+                                                        <span class="close" onClick="hidePopUp()">&times;</span>
+                                                    </div>
+                                                    <div class="modal-content">
+                                                        <div class="member-information">
+                                                            <h2 >${currentMember.children[0].innerHTML}</h2>
+                                                            <span>
+                                                                ${currentMember.children[1].children[0].innerHTML} / 
+                                                                ${currentMember.children[1].children[1].innerHTML} / 
+                                                                ${currentMember.children[1].children[2].innerHTML}
+                                                            </span>
+                                                            <p>
+                                                                ${currentMember.children[2].innerHTML}
+                                                            </p>
+                                                            <span>
+                                                                <button type="button" class="delete-btn" onClick="deleteMember('${currentMember.children[1].children[0].innerHTML}')">DELETE</button>
+                                                                <button type="button" class="save-btn">SAVE</button>
+                                                                <button type="button" class="cancel-btn" onClick="hidePopUp()">CANCEL</button>
+                                                            </span>
+                                                        </div>
+                                                    </div>`;
+
+                                                        
                                                             
 }
 
 
 function hidePopUp () {
-    let modal = document.getElementById("myModal");// Get the modal
-    modal.style.display = "none";
-    showAllMembers();
-    updateNumberOfItems();
+
+    if ( document.getElementById("myModal") != null){// Get the modal
+        let modal = document.getElementById("myModal");
+        modal.style.display = "none";
+    }
 }
 
 // When the user clicks anywhere outside of the modal, close it
+
 window.onclick = function(event) {
     let modal = document.getElementById("myModal");// Get the modal
     if (event.target == modal) {
         modal.style.display = "none";
     }
+
 }
 

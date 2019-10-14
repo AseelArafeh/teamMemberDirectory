@@ -10,7 +10,7 @@
             <h1>PSEU Team Members</h1>
         </header>
 
-        <div class="main-container">
+        <div class="main-container" id="main">
             <aside class="add-member-container">
                 <h1>Add new member</h1> 
                 <form class="add-member-form"> 
@@ -49,7 +49,7 @@
                         <span>Add to button / or index at</span> 
                         <input type="text" class="text-input">
                     </span>   
-                    <button type="submit" onclick="saveButton()">Save</button>
+                    <button type="submit" onclick="addNewMember()">Save</button>
                 </form>
             </aside>
             <div class="members-list-container" >
@@ -93,9 +93,8 @@
                 </ul>
             </div>
         </div>
-
-
-        
+        <div id="myModal" class="modal">
+            
         <script src="js/index.js"></script>
     </body>
 </html>
