@@ -1,4 +1,5 @@
 let teamMembers = [];
+let teamMembersAfterFiltering = [];
 let allEmails = new Set(); 
 
 class member {
@@ -32,23 +33,25 @@ function getFromLocalStorage() {
 function showAllMembers() {
 
     getFromLocalStorage();
+    teamMembersAfterFiltering = teamMembers;
+    doFiltering();
     //clear the member list befor 
     document.getElementById('list-of-members').innerHTML = null;
-    for (let i = 0; i < teamMembers.length; i++) {
+    for (let i = 0; i < teamMembersAfterFiltering.length; i++) {
         let currentMember = `<li class="list-element">
-                                <div class="btn" onClick="deleteMember('${teamMembers[i].email}');">
+                                <div class="btn" onClick="deleteMember('${teamMembersAfterFiltering[i].email}');">
                                     <div class="delete-btn">
                                         <div class="inner-symbol">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="member-information"  id="myBtn" onClick="showPopUp(this);">
-                                    <h3>${teamMembers[i].name}</h3>
+                                    <h3>${teamMembersAfterFiltering[i].name}</h3>
                                     <span>
-                                        <span>${teamMembers[i].email}</span> / <span>${teamMembers[i].major}</span> / <span>${teamMembers[i].role}</span>
+                                        <span>${teamMembersAfterFiltering[i].email}</span> / <span>${teamMembersAfterFiltering[i].major}</span> / <span>${teamMembersAfterFiltering[i].role}</span>
                                     </span>
                                     <p>
-                                        ${teamMembers[i].biography}
+                                        ${teamMembersAfterFiltering[i].biography}
                                     </p>
                                 </div>
                             </li>`;
@@ -82,7 +85,10 @@ function addNewMember() {
     let checkBox = document.getElementById("check-box");
     let indexToAddAt = 0;
     if(checkBox.checked) {
-        let indexToAddAt = document.getElementById("index").value;    
+        indexToAddAt = document.getElementById("index").value;    
+        indexToAddAt--;
+        // if(indexToAddAt not integer number  or less than 0)
+            // alert("index should be positive number");
     } 
 
     teamMembers.splice(indexToAddAt, 0, newMember);
@@ -110,39 +116,61 @@ function deleteMember(emailToBeDeleted) {
     updateNumberOfItems();
     
 }
-/*
-function deleteMember(elementToBeDeleted) {
-
-    console.log(elementToBeDeleted);// email
-
-    let emailToBeDeleted = elementToBeDeleted.parentNode.children[1].children[1].children[0].innerHTML;
-    allEmails.delete(emailToBeDeleted);
-    for(let i=0; i<teamMembers.length;i++){
-        console.log(teamMembers[i].email);
-        console.log(emailToBeDeleted);
-        if(teamMembers[i].email == emailToBeDeleted){
-            teamMembers.splice(i, 1);
-            return;
-        }
-    }
-    //remove from array 
-    console.log(teamMembers);
-    // set the updated array to localstorage 
-    const jsonString = JSON.stringify(teamMembers);
-    console.log(teamMembers);
-    localStorage.setItem('allMembers', jsonString);
-
-    elementToBeDeleted.parentNode.parentNode.removeChild(elementToBeDeleted.parentNode);
-    updateNumberOfItems();
-    showAllMembers();
-    
-}*/
-
 
 
 // Filter 
 
+function doFiltering() {
+    //teamMembersAfterFiltering
 
+    let allSortBy = document.getElementById('sort-by');
+    let sortBy = allSortBy.options[allSortBy.selectedIndex].text;
+
+    let allFilterByMajor = document.getElementById('filter-by-major');
+    let filterByMajor = allFilterByMajor.options[allFilterByMajor.selectedIndex].text; 
+
+    let allFilterByRole = document.getElementById('filter-by-role');
+    let filterByRole = allFilterByRole.options[allFilterByRole.selectedIndex].text;
+    
+    let filterByName = document.getElementById('filter-by-name').value;
+
+    if(sortBy != "SORT BY")
+        doSortBy(sortBy);
+    if(filterByMajor != "Major")
+        doFilterByMajor(filterByMajor);
+    if(filterByRole != "Role")
+        doFilterByRole(filterByRole);
+    if(filterByName != "") 
+        doFilterByName(filterByName);
+
+}
+
+function doSortBy(typeOfSort) {
+    if(typeOfSort == "A-Z") {
+        teamMembersAfterFiltering.sort( (a , b) => (a.name > b.name) ? 1 : -1 );
+    }
+    else if(typeOfSort == "Z-A") {
+        teamMembersAfterFiltering.sort( (a , b) => (a.name < b.name) ? 1 : -1 );
+    }
+    else if(typeOfSort == "Newest") {
+        teamMembersAfterFiltering.sort( (a , b) => (a.timestamp < b.timestamp) ? 1 : -1 );
+    }
+    else if(typeOfSort == "Oldest") {
+        teamMembersAfterFiltering.sort( (a , b) => (a.timestamp > b.timestamp) ? 1 : -1 );
+    }
+}
+
+function doFilterByMajor(typeOfMajor) {
+
+}
+
+function doFilterByRole(typeOfRole) {
+    
+}
+
+function doFilterByName() {
+
+}
 
 
 

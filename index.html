@@ -57,22 +57,23 @@
                     <div class="filter-bar">
                         <div class="sort-by-class">
                             SORT BY 
-                            <select class="sort-by-class">
+                            <select class="sort-by-class" id="sort-by" onchange="showAllMembers()">
+                                <option value="0" selected disabled hidden>SORT BY</option>
                                 <option value="1">A-Z</option>
                                 <option value="2">Z-A</option>
-                                <option value="3">Newwest</option>
+                                <option value="3">Newest</option>
                                 <option value="4">Oldest</option>
                             </select>
                         </div>
                         <div class="major-role">
-                            <select class="major-class">
+                            <select class="major-class" id="filter-by-major" onchange="showAllMembers()">
                                 <option value="0" selected disabled hidden>Major</option>
                                 <option value="1">Computer Science</option>
                                 <option value="2">Computer Engineering</option>
                                 <option value="3">Information Technology</option>
                                 <option value="4">Information System </option>
                             </select>
-                            <select class="role-class">
+                            <select class="role-class" id="filter-by-role" onchange="showAllMembers()">
                                 <option value="0" selected disabled hidden>Role</option>
                                 <option value="1">Front-End Developer</option>
                                 <option value="2">Back-End Developer</option>
@@ -81,7 +82,7 @@
                             </select>
                         </div>
                         <div class="search-by-name-class">
-                            <input type="text" placeholder="Search by name...">
+                            <input type="text" placeholder="Search by name..." id="filter-by-name" onchange="showAllMembers()">
                         </div>
                     </div>
                     <div id="number-of-items">   
