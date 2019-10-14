@@ -76,7 +76,14 @@ function addNewMember() {
 
     allEmails.add(email);
     let newMember = new member(name, email, major, role, biography);
-    teamMembers.push(newMember);
+    let checkBox = document.getElementById("check-box");
+    let indexToAddAt = 0;
+    if(checkBox.checked) {
+        let indexToAddAt = document.getElementById("index").value;teamMembers.splice(indexToAddAt, 0, newMember);
+    } 
+    
+    
+
     storeAtLocalStorage();
     showAllMembers();
     updateNumberOfItems();
@@ -127,6 +134,12 @@ function deleteMember(elementToBeDeleted) {
     showAllMembers();
     
 }*/
+
+
+
+// Filter 
+
+
 
 
 
