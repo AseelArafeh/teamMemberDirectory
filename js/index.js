@@ -2,12 +2,13 @@ let teamMembers = [];
 let allEmails = new Set(); 
 
 class member {
-	constructor(name, email, major, role, biography) {
+	constructor(name, email, major, role, biography, timestamp) {
 		this.name = name;
         this.email = email;
         this.major = major;
         this.role = role;
         this.biography = biography;
+        this.timestamp = timestamp;
 	}
 }
 
@@ -75,14 +76,16 @@ function addNewMember() {
     }
 
     allEmails.add(email);
-    let newMember = new member(name, email, major, role, biography);
+    let currentMoment = new Date();
+    let newMember = new member(name, email, major, role, biography, currentMoment.getTime());
+    console.log(newMember.timestamp);
     let checkBox = document.getElementById("check-box");
     let indexToAddAt = 0;
     if(checkBox.checked) {
-        let indexToAddAt = document.getElementById("index").value;teamMembers.splice(indexToAddAt, 0, newMember);
+        let indexToAddAt = document.getElementById("index").value;    
     } 
-    
-    
+
+    teamMembers.splice(indexToAddAt, 0, newMember);
 
     storeAtLocalStorage();
     showAllMembers();
