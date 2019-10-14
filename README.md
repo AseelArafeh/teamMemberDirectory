@@ -2,7 +2,7 @@
 
 > Project Description 
 
-  Project represents a simple directory for PSEU Team Members. 
+  PSEU Team Members Directory represents a simple directory for PSEU Team Members. 
   The app allows users to add members, update and delete members in the directory instantly. Full information for any member 
   appears by clicking on its block.
   Some specific filters on mebers is allowed.
@@ -16,10 +16,12 @@
 > Built With
   
   HTML
-  CSS
+  ,CSS and SASS, 
   Javascript
   
   
+
   
-
-
+  
+  
+  
