@@ -16,7 +16,7 @@
                 <form class="add-member-form"> 
                     
                     <div>
-                        <input type="text" placeholder="Name" id="name"> 
+                        <input type="text" placeholder="Name" id="name" required>  
                     </div>
                     <div>
                         <input type="text" placeholder="Email" id="email">
@@ -49,10 +49,10 @@
                         <span>Add to button / or index at</span> 
                         <input type="text" class="text-input">
                     </span>   
+                    <button type="submit" onclick="saveButton()">Save</button>
                 </form>
-                <button type="button" onclick="saveButton()">Save</button>
             </aside>
-            <div class="members-list-container">
+            <div class="members-list-container" >
                 <nav class="main-filter-bar">
                     <div class="filter-bar">
                         <div class="sort-by-class">

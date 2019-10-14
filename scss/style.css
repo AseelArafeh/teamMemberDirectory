@@ -148,7 +148,7 @@ header h1 {
 }
 
 .main-container .members-list-container {
-  overflow-y: auto;
+  overflow-y: scroll;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -505,6 +505,7 @@ header h1 {
   height: 150px;
   overflow-y: scroll;
   margin: 15px;
+  width: 80%;
 }
 
 .modal .modal-content .member-information button {
