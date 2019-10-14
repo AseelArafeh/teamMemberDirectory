@@ -168,8 +168,8 @@ function doFilterByRole(typeOfRole) {
     teamMembersAfterFiltering = teamMembersAfterFiltering.filter( item => item.role == typeOfRole);
 }
 
-function doFilterByName() {
-    
+function doFilterByName(filterByName) {
+    teamMembersAfterFiltering = teamMembersAfterFiltering.filter( item => item.name == filterByName);
 }
 
 
