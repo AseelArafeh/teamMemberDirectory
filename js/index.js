@@ -161,15 +161,15 @@ function doSortBy(typeOfSort) {
 }
 
 function doFilterByMajor(typeOfMajor) {
-
+    teamMembersAfterFiltering = teamMembersAfterFiltering.filter( item => item.major == typeOfMajor);
 }
 
 function doFilterByRole(typeOfRole) {
-    
+    teamMembersAfterFiltering = teamMembersAfterFiltering.filter( item => item.role == typeOfRole);
 }
 
 function doFilterByName() {
-
+    
 }
 
 
