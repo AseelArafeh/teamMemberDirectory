@@ -117,6 +117,7 @@ header h1 {
   padding: 3%;
   width: 310px;
   overflow-y: auto;
+  resize: none;
 }
 
 .main-container .add-member-container .add-member-form span {

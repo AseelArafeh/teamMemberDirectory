@@ -54,6 +54,7 @@ header {
             div textarea {
                 @include memberFormItems();
                 overflow-y: auto;
+                resize: none;
             }
 
             span {
