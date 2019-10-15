@@ -74,7 +74,7 @@ function addNewMember() {
     let role = allRoles.options[allRoles.selectedIndex].text;
     let biography = document.getElementById('biography').value;
     let alertMessage = document.getElementById('alert-msg');
-    if(name == "" || email == "" || major == "Major" || role == "Role" || biography.length < 500){
+    if(name == "" || email == "" || major == "Major" || role == "Role" || biography.trim().length < 500){
         
         alertMessage.style.display = "block";
         alertMessage.innerHTML = "Some field was empty";
