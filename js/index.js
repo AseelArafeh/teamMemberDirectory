@@ -255,8 +255,9 @@ function updateMemberInformation (emailForUpdatedMember) {
             let allRoles = document.getElementById('all-roles-in-pop-up');
             let newRole = allRoles.options[allRoles.selectedIndex].text;
             
-            let newBiography = document.getElementById('biography-in-pop-up').innerText;
-            Console.log(newBiography);
+            let newBiography = document.getElementById('biography-in-pop-up').innerHTML;
+        
+            console.log(newBiography);
             newMemberInformation = new member(teamMembers[i].name, teamMembers[i].email, newMajor, newRole, newBiography, teamMembers[i].timestamp);
             teamMembers[i] = newMemberInformation;
         }
