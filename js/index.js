@@ -195,21 +195,21 @@ function showPopUp (currentMember) {
                                                             <h2 >${name}</h2>
                                                             <span>
                                                                 ${email} /
-                                                                <select class="custom-select" id="all-majors-in-pop-up" onChange="updateMemberInformation(${major})">
+                                                                <select class="custom-select" id="all-majors-in-pop-up" onChange="updateMemberInformation(${email})">
                                                                     <option value="Computer Science">Computer Science</option>
                                                                     <option value="0">Computer Engineering</option>
                                                                     <option value="Information Technology">Information Technology</option>
                                                                     <option value="Information System">Information System </option>
                                                                 </select>  
                                                                 / 
-                                                                <select class="custom-select" id="all-roles-in-pop-up" onChange="updateMemberInformation(${role})">
+                                                                <select class="custom-select" id="all-roles-in-pop-up" onChange="updateMemberInformation(${email})">
                                                                     <option value="Front-End Developer">Front-End Developer</option>
                                                                     <option value="Back-End Developer">Back-End Developer</option>
                                                                     <option value="Full-Stack Developer">Full-Stack Developer</option>
                                                                     <option value="UI/UX Designer">UI/UX Designer</option>
                                                                 </select>
                                                             </span>
-                                                            <p>
+                                                            <p id="biography-in-pop-up" contenteditable="true" onChange="updateMemberInformation(${email})">
                                                                 ${biography}
                                                             </p>
                                                             <span>
@@ -232,7 +232,7 @@ function setSelectedMajorInPopUp(major) {
         if (majorsPopUp.options[i].text === major)
             majorsPopUp.options[i].selected = true;
     }
-    
+
 }
 
 function setSelectedRoleInPopUp(role) {
@@ -247,15 +247,17 @@ function setSelectedRoleInPopUp(role) {
 
 function updateMemberInformation (emailForUpdatedMember) {
 
-    for (let i=0; i<teamMembers.length;i++) {
+    for (let i=0; i<teamMembers.length; i++) {
         if(teamMembers[i].email == emailForUpdatedMember) {
             let allMajors = document.getElementById('all-majors-in-pop-up');
             let newMajor = allMajors.options[allMajors.selectedIndex].text;
             
             let allRoles = document.getElementById('all-roles-in-pop-up');
             let newRole = allRoles.options[allRoles.selectedIndex].text;
-
-            newMemberInformation = new member(teamMembers[i].name, teamMembers[i].email, newMajor, newRole, teamMembers[i].biography,teamMembers[i].timestamp);
+            
+            let newBiography = document.getElementById('biography-in-pop-up').innerText;
+            Console.log(newBiography);
+            newMemberInformation = new member(teamMembers[i].name, teamMembers[i].email, newMajor, newRole, newBiography, teamMembers[i].timestamp);
             teamMembers[i] = newMemberInformation;
         }
     }
