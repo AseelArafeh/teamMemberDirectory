@@ -85,6 +85,11 @@ header {
             font: 22px 'Segoe UI';
             margin-top: 5%;
         }
+        #alert-msg {
+            display: none;
+            color: red;
+            font-weight: bold;
+        }
     }
     .members-list-container {
         overflow-y: scroll;
@@ -301,6 +306,7 @@ header {
                 cursor: pointer;
                 
             }
+
             .delete-btn {
                     background-color: #FF4A4A;
             }

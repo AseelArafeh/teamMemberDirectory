@@ -38,7 +38,7 @@ function showAllMembers() {
     for(let i=0;i<teamMembers.length;i++){
         allEmails.add(teamMembers[i].email);      
     }
-    
+
     console.log(allEmails);
     console.log(allEmails.size);
     doFiltering();
@@ -76,16 +76,26 @@ function addNewMember() {
     let allRoles = document.getElementById('all-roles');
     let role = allRoles.options[allRoles.selectedIndex].text;
     let biography = document.getElementById('biography').value;
+    let alertMessage = document.getElementById('alert-msg');
     if(name == "" || email == "" || major == "Major" || role == "Role" || biography.length < 500){
-        alert("some field was empty");
+        
+        alertMessage.style.display = "block";
+        alertMessage.innerHTML = "Some field was empty";
+        
+        //alert("some field was empty");
         return;
     }
     
     if (allEmails.has(email) == 1) {
-        alert("email was already exist");
+
+        alertMessage.style.display = "block";
+        alertMessage.innerHTML = "Email was already exist";
+        
+        //alert("email was already exist");
         return;
     }
 
+    alertMessage.style.display = "none";
     allEmails.add(email);
     let currentMoment = new Date();
     let newMember = new member(name, email, major, role, biography, currentMoment.getTime());
@@ -114,6 +124,7 @@ function deleteMember(emailToBeDeleted) {
             teamMembers.splice(i, 1);
         }
     }
+    allEmails.delete(emailToBeDeleted);
     hidePopUp();
     // set the updated array to localstorage 
     storeAtLocalStorage();

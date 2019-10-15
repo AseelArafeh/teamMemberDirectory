@@ -148,6 +148,12 @@ header h1 {
   margin-top: 5%;
 }
 
+.main-container .add-member-container #alert-msg {
+  display: none;
+  color: red;
+  font-weight: bold;
+}
+
 .main-container .members-list-container {
   overflow-y: scroll;
   display: -webkit-box;
