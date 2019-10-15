@@ -17,7 +17,7 @@ showAllMembers();
 updateNumberOfItems();
 
 function updateNumberOfItems() {
-    document.getElementById("number-of-items").innerHTML = teamMembers.length + " ITEMS";
+    document.getElementById("number-of-items").innerHTML = teamMembersAfterFiltering.length + " ITEMS";
 }
 
 function storeAtLocalStorage() {
@@ -31,10 +31,18 @@ function getFromLocalStorage() {
 }
 
 function showAllMembers() {
-
+    console.log(allEmails.size);
+    
     getFromLocalStorage();
     teamMembersAfterFiltering = teamMembers;
+    for(let i=0;i<teamMembers.length;i++){
+        allEmails.add(teamMembers[i].email);      
+    }
+    
+    console.log(allEmails);
+    console.log(allEmails.size);
     doFiltering();
+    updateNumberOfItems();
     //clear the member list befor 
     document.getElementById('list-of-members').innerHTML = null;
     for (let i = 0; i < teamMembersAfterFiltering.length; i++) {
