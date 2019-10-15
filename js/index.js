@@ -31,7 +31,6 @@ function getFromLocalStorage() {
 }
 
 function showAllMembers() {
-    console.log(allEmails.size);
     
     getFromLocalStorage();
     teamMembersAfterFiltering = teamMembers;
@@ -39,8 +38,6 @@ function showAllMembers() {
         allEmails.add(teamMembers[i].email);      
     }
 
-    console.log(allEmails);
-    console.log(allEmails.size);
     doFiltering();
     updateNumberOfItems();
     //clear the member list befor 
@@ -81,8 +78,6 @@ function addNewMember() {
         
         alertMessage.style.display = "block";
         alertMessage.innerHTML = "Some field was empty";
-        
-        //alert("some field was empty");
         return;
     }
     
@@ -90,16 +85,13 @@ function addNewMember() {
 
         alertMessage.style.display = "block";
         alertMessage.innerHTML = "Email was already exist";
-        
-        //alert("email was already exist");
         return;
     }
-
+    
     alertMessage.style.display = "none";
     allEmails.add(email);
     let currentMoment = new Date();
     let newMember = new member(name, email, major, role, biography, currentMoment.getTime());
-    console.log(newMember.timestamp);
     let checkBox = document.getElementById("check-box");
     let indexToAddAt = 0;
     if(checkBox.checked) {
@@ -138,7 +130,6 @@ function deleteMember(emailToBeDeleted) {
 // Filter 
 
 function doFiltering() {
-    //teamMembersAfterFiltering
 
     let allSortBy = document.getElementById('sort-by');
     let sortBy = allSortBy.options[allSortBy.selectedIndex].text;
@@ -276,7 +267,6 @@ function updateMemberInformation (emailForUpdatedMember) {
             
             let newBiography = document.getElementById('biography-in-pop-up').innerHTML;
         
-            console.log(newBiography);
             newMemberInformation = new member(teamMembers[i].name, teamMembers[i].email, newMajor, newRole, newBiography, teamMembers[i].timestamp);
             teamMembers[i] = newMemberInformation;
         }
@@ -285,7 +275,6 @@ function updateMemberInformation (emailForUpdatedMember) {
     storeAtLocalStorage();
     showAllMembers();
     hidePopUp();
-    //updateNumberOfItems();
 }
 
 function hidePopUp () {
