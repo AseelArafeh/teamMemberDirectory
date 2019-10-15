@@ -178,37 +178,93 @@ function doFilterByName(filterByName) {
 // When the user clicks any member, members's own information will apper in a pop up modal 
 function showPopUp (currentMember) {
 
-    console.log(currentMember);
     let modal = document.getElementById("myModal");
     modal.style.display = "block";
-    //let elementToBeDeleted = new member(currentMember.children[0].innerHTML, currentMember.children[1].children[0].innerHTML, currentMember.children[1].children[1].innerHTML, currentMember.children[1].children[2].innerHTML, currentMember.children[2].innerHTML);
-    //console.log(elementToBeDeleted);
+
+    let name = currentMember.children[0].innerHTML;
+    let email = currentMember.children[1].children[0].innerHTML;
+    let major = currentMember.children[1].children[0].innerHTML;
+    let role = currentMember.children[1].children[0].innerHTML;
+    let biography = currentMember.children[2].innerHTML;
+
     document.getElementById('myModal').innerHTML = `<div class="close-container">
                                                         <span class="close" onClick="hidePopUp()">&times;</span>
                                                     </div>
                                                     <div class="modal-content">
                                                         <div class="member-information">
-                                                            <h2 >${currentMember.children[0].innerHTML}</h2>
+                                                            <h2 >${name}</h2>
                                                             <span>
-                                                                ${currentMember.children[1].children[0].innerHTML} / 
-                                                                ${currentMember.children[1].children[1].innerHTML} / 
-                                                                ${currentMember.children[1].children[2].innerHTML}
+                                                                ${email} /
+                                                                <select class="custom-select" id="all-majors-in-pop-up" onChange="updateMemberInformation(${major})">
+                                                                    <option value="Computer Science">Computer Science</option>
+                                                                    <option value="0">Computer Engineering</option>
+                                                                    <option value="Information Technology">Information Technology</option>
+                                                                    <option value="Information System">Information System </option>
+                                                                </select>  
+                                                                / 
+                                                                <select class="custom-select" id="all-roles-in-pop-up" onChange="updateMemberInformation(${role})">
+                                                                    <option value="Front-End Developer">Front-End Developer</option>
+                                                                    <option value="Back-End Developer">Back-End Developer</option>
+                                                                    <option value="Full-Stack Developer">Full-Stack Developer</option>
+                                                                    <option value="UI/UX Designer">UI/UX Designer</option>
+                                                                </select>
                                                             </span>
                                                             <p>
-                                                                ${currentMember.children[2].innerHTML}
+                                                                ${biography}
                                                             </p>
                                                             <span>
-                                                                <button type="button" class="delete-btn" onClick="deleteMember('${currentMember.children[1].children[0].innerHTML}')">DELETE</button>
-                                                                <button type="button" class="save-btn">SAVE</button>
+                                                                <button type="button" class="delete-btn" onClick="deleteMember('${email}')">DELETE</button>
+                                                                <button type="button" class="save-btn" onClick="updateMemberInformation('${email}')">SAVE</button>
                                                                 <button type="button" class="cancel-btn" onClick="hidePopUp()">CANCEL</button>
                                                             </span>
                                                         </div>
                                                     </div>`;
 
-                                                        
+    setSelectedMajorInPopUp(major);
+    setSelectedRoleInPopUp(role);                     
                                                             
 }
 
+function setSelectedMajorInPopUp(major) {
+
+    let majorsPopUp = document.getElementById("all-majors-in-pop-up");
+    for (let i = 0; i < majorsPopUp.options.length; ++i) {
+        if (majorsPopUp.options[i].text === major)
+            majorsPopUp.options[i].selected = true;
+    }
+    
+}
+
+function setSelectedRoleInPopUp(role) {
+
+    let rolesPopUp = document.getElementById("all-roles-in-pop-up");
+    for (let i = 0; i < rolesPopUp.options.length; ++i) {
+        if (rolesPopUp.options[i].text === role)
+            rolesPopUp.options[i].selected = true;
+    }  
+
+}
+
+function updateMemberInformation (emailForUpdatedMember) {
+
+    for (let i=0; i<teamMembers.length;i++) {
+        if(teamMembers[i].email == emailForUpdatedMember) {
+            let allMajors = document.getElementById('all-majors-in-pop-up');
+            let newMajor = allMajors.options[allMajors.selectedIndex].text;
+            
+            let allRoles = document.getElementById('all-roles-in-pop-up');
+            let newRole = allRoles.options[allRoles.selectedIndex].text;
+
+            newMemberInformation = new member(teamMembers[i].name, teamMembers[i].email, newMajor, newRole, teamMembers[i].biography,teamMembers[i].timestamp);
+            teamMembers[i] = newMemberInformation;
+        }
+    }
+
+    storeAtLocalStorage();
+    showAllMembers();
+    hidePopUp();
+    //updateNumberOfItems();
+}
 
 function hidePopUp () {
 
