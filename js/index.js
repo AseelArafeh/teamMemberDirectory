@@ -68,7 +68,7 @@ function addNewMember() {
     let allRoles = document.getElementById('all-roles');
     let role = allRoles.options[allRoles.selectedIndex].text;
     let biography = document.getElementById('biography').value;
-    if(name=="" || email=="" || major=="Major" || role=="Role" || biography.length<500){
+    if(name == "" || email == "" || major == "Major" || role == "Role" || biography.length < 500){
         alert("some field was empty");
         return;
     }
@@ -102,8 +102,6 @@ function deleteMember(emailToBeDeleted) {
     showAllMembers();
     updateNumberOfItems();
     for (let i=0; i<teamMembers.length;i++) {
-        console.log(teamMembers[i].email);
-        console.log(emailToBeDeleted);
         if(teamMembers[i].email == emailToBeDeleted) {
             teamMembers.splice(i, 1);
         }
@@ -169,7 +167,7 @@ function doFilterByRole(typeOfRole) {
 }
 
 function doFilterByName(filterByName) {
-    teamMembersAfterFiltering = teamMembersAfterFiltering.filter( item => item.name == filterByName);
+    teamMembersAfterFiltering = teamMembersAfterFiltering.filter( ( item => item.name.includes(filterByName) ) );
 }
 
 
